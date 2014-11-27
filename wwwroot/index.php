@@ -9,11 +9,13 @@
 
 if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 
+require './Application/Common/Common/toolkit.php';
+
 /**
  * 系统调试设置
  * 项目正式部署后请设置为false
  */
-//define ( 'APP_DEBUG', true );
+define ( 'APP_DEBUG', true );
 
 /**
  * 应用目录设置
@@ -25,6 +27,8 @@ if(!is_file(APP_PATH . 'User/Conf/config.php')){
 	header('Location: ./install.php');
 	exit;
 }
+
+define("APP_STATUS", get_current_appstatus());
 
 /**
  * 缓存目录设置
